@@ -17,4 +17,4 @@ class HttpsUrlOf(Url):
         self._url = url_elements
 
     def compose(self) -> str:
-        return f"https://{'/'.join(map(str, self._url))}"
+        return f"https://{''.join(map(str, self._url))}"
