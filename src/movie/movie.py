@@ -95,13 +95,13 @@ class MovieSummary(Record):
 
     def value(self) -> str:
         return "{star} Title - {title}\n" \
-               "{star} Rating - {rating}\n" \
                "{star} Overview - {overview}\n" \
+               "{star} Rating - {rating}\n" \
+               "{star} Genres - {genres}\n" \
                "{star} Release Date - {date}\n" \
                "{star} Votes - {votes}\n" \
                "{star} Budget - {bugdet}$\n" \
                "{star} Revenue - {revenue}$\n" \
-               "{star} Genres - {genres}\n" \
                "{star} Casts - {casts}\n".format(star=_star,
                                                  title=self._movie.title(),
                                                  rating=self._movie.rating(),
@@ -112,4 +112,3 @@ class MovieSummary(Record):
                                                  revenue=self._movie.revenue(),
                                                  genres=self._movie.genres(),
                                                  casts=self._movie.casts())
-

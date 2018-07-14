@@ -1,7 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Dict, Any, Callable
 from src.bot import BOT_API_TOKEN
-from src.movie.record import MovieRecord, Record
+from src.movie.movie import MovieSummary
+from src.movie.record import Record
 from src.server import requests
 from src.web_api.requests import SafeBotRequest, Request
 from src.web_api.responses import Response
@@ -50,7 +51,7 @@ class BotMessage(Message):
 
     def __init__(self, chat_id: int, movie: str) -> None:
         self._chat_id: int = chat_id
-        self._movie_summary: Record = MovieRecord(movie)
+        self._movie_summary: Record = MovieSummary(movie)
         self._request: Request = SafeBotRequest(HttpsUrlOf('api.telegram.org/bot', BOT_API_TOKEN, '/sendMessage'))
 
     def send(self) -> Response:
