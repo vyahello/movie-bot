@@ -33,7 +33,7 @@ class MovieCasts(Record):
     def __init__(self, movie: str) -> None:
         self._request: Callable[..., Request] = lambda: SafeBotRequest(
             HttpsUrlOf('api.themoviedb.org/3/movie/',
-                       MovieId(movie).value(), '/credits?api_key=',
+                       MovieId(movie.strip('/')).value(), '/credits?api_key=',
                        MOVIE_API_KEY))
 
     def value(self) -> Iterator[Dict[Any, Any]]:
@@ -47,7 +47,7 @@ class MovieRecord(Record):
     def __init__(self, movie: str) -> None:
         self._request: Callable[..., Request] = lambda: SafeBotRequest(
             HttpsUrlOf('api.themoviedb.org/3/movie/',
-                       MovieId(movie).value(),
+                       MovieId(movie.strip('/')).value(),
                        '?api_key=', MOVIE_API_KEY))
 
     def value(self) -> Dict[str, Any]:
